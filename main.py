@@ -31,11 +31,11 @@ async def main_page_html(request: Request):
     return templates.TemplateResponse("main_page.html"
                                       , {"request": request})
 
-# http://localhost:8000/main_html
-@app.get("/main.html")
-async def main_html(request: Request):
-    return templates.TemplateResponse("main.html"
-                                      , {"request": request})
+# # http://localhost:8000/main_html
+# @app.get("/main.html")
+# async def main_html(request: Request):
+#     return templates.TemplateResponse("main.html"
+#                                       , {"request": request})
 # # http://localhost:8000/main_page.html
 # @app.get("/main_page.html")
 # async def main_page_html(request: Request):
