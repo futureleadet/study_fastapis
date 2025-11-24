@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 app = FastAPI()
+
 # http://localhost:8000/html
 @app.get("/html")
 async def root():
