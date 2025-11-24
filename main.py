@@ -60,4 +60,10 @@ async def popup_info_html(request: Request):
     return templates.TemplateResponse("popup_info.html"
                                       , {"request": request})
 
+# 정적 파일 설정
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/images", StaticFiles(directory="resources/images"))
+app.mount("/css", StaticFiles(directory="resources/css"))
+
 pass
