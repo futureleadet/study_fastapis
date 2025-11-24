@@ -65,7 +65,22 @@ async def users_list(request : Request):
     return templates.TemplateResponse("users/list.html"
                                       , context)
 
+# http://Localhost:8000/products/list
+@app.get("/products/list")
+async def products_list(request : Request):
 
+    # 이 데이터 블록을 다시 입력하거나, 들여쓰기 및 쉼표를 확인합니다.
+    products = [
+        {"name": "Laptop", "price": 1200, "tags": ["electronics", "office"]},
+        {"name": "Smartphone", "price": 800, "tags": ["mobile", "electronics"]},
+        {"name": "Keyboard", "price": 100, "tags": ["accessories"]}
+    ]
+    
+    context = {
+        "request" : request,
+        "products_list": products
+    }
+    return templates.TemplateResponse("products/list.html", context)
 
 
 # # http://localhost:8000/main_page.html
