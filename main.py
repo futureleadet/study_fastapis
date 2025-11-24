@@ -21,6 +21,7 @@ async def root_html():
         </html>
         '''
     return html_content
+
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
 templates = Jinja2Templates(directory="templates/")
