@@ -51,7 +51,7 @@ async def main_html_context(request: Request):
                                       , context)
 #http://Localhost:8000/users/list
 @app.get("/users/list")
-async def user_list(request : Request):
+async def users_list(request : Request):
 
     users = [
     {"name": "Alice", "age": 25, "city": "Seoul"},
