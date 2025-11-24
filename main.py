@@ -32,7 +32,7 @@ async def main_page_html(request: Request):
                                       , {"request": request})
 
 # # http://localhost:8000/main_html
-# @app.get("/main.html")
+# @app.get("/main_html")
 # async def main_html(request: Request):
 #     return templates.TemplateResponse("main.html"
 #                                       , {"request": request})
@@ -49,6 +49,23 @@ async def main_html_context(request: Request):
     }
     return templates.TemplateResponse("main_context.html"
                                       , context)
+#http://Localhost:8000/users/list
+@app.get("/users/list")
+async def user_list(request : Request):
+
+    users = [
+    {"name": "Alice", "age": 25, "city": "Seoul"},
+    {"name": "Bob", "age": 30, "city": "Busan"},
+    {"name": "Charlie", "age": 28, "city": "Daegu"}
+    ]
+    context = {
+        "request" : request
+        , "user_list": users
+    }
+    return templates.TemplateResponse("users/list.html"
+                                      , context)
+
+
 
 
 # # http://localhost:8000/main_page.html
@@ -58,22 +75,22 @@ async def main_html_context(request: Request):
 #                                       , {"request": request})
 
 # http://localhost:8000/restaurant_info.html
-@app.get("/restaurant_info.html")
-async def restaurant_info_html(request: Request):
-    return templates.TemplateResponse("restaurant_info.html"
-                                      , {"request": request})
+# @app.get("/restaurant_info.html")
+# async def restaurant_info_html(request: Request):
+#     return templates.TemplateResponse("restaurant_info.html"
+#                                       , {"request": request})
 
-# http://localhost:8000/performance_info.html
-@app.get("/performance_info.html")
-async def performance_info_html(request: Request):
-    return templates.TemplateResponse("performance_info.html"
-                                      , {"request": request})
+# # http://localhost:8000/performance_info.html
+# @app.get("/performance_info.html")
+# async def performance_info_html(request: Request):
+#     return templates.TemplateResponse("performance_info.html"
+#                                       , {"request": request})
 
-# http://localhost:8000/popup_info.html
-@app.get("/popup_info.html")
-async def popup_info_html(request: Request):
-    return templates.TemplateResponse("popup_info.html"
-                                      , {"request": request})
+# # http://localhost:8000/popup_info.html
+# @app.get("/popup_info.html")
+# async def popup_info_html(request: Request):
+#     return templates.TemplateResponse("popup_info.html"
+#                                       , {"request": request})
 
 # 정적 파일 설정
 from fastapi.staticfiles import StaticFiles
