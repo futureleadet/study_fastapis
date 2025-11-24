@@ -48,7 +48,7 @@ async def main_html_context(request: Request):
         "user": {"name": "Sanghun", "age": 33}
     }
     return templates.TemplateResponse("main_context.html"
-                                      , {"request": request})
+                                      , context)
 
 
 # # http://localhost:8000/main_page.html
