@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 app = FastAPI()
-# http://localhost:8000/
-@app.get("/")
+# http://localhost:8000/html
+@app.get("/html")
 async def root():
     return {"message": "Hello, World!"}
 async def root_html():
