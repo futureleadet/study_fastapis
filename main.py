@@ -36,6 +36,21 @@ async def main_page_html(request: Request):
 # async def main_html(request: Request):
 #     return templates.TemplateResponse("main.html"
 #                                       , {"request": request})
+
+# http://localhost:8000/main_html_context
+@app.get("/main_html_context")
+async def main_html_context(request: Request):
+        # 템플릿에 전달할 데이터
+    context = {
+        "request": request,
+        "title": "FastAPI + Jinja Example",
+        "items": ["Apple", "Banana", "Cherry"],
+        "user": {"name": "Sanghun", "age": 33}
+    }
+    return templates.TemplateResponse("main_context.html"
+                                      , {"request": request})
+
+
 # # http://localhost:8000/main_page.html
 # @app.get("/main_page.html")
 # async def main_page_html(request: Request):
