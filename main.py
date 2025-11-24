@@ -1,9 +1,6 @@
 from fastapi import FastAPI
 app = FastAPI()
-# # http://localhost:8000/
-# @app.get("/")
-# async def root():
-#     return {"message": "Hello, World!"}
+
 # # http://localhost:8000/html
 # @app.get("/html")
 # async def root_html():
@@ -26,15 +23,35 @@ from fastapi.templating import Jinja2Templates
 from fastapi import Request
 templates = Jinja2Templates(directory="templates/")
 
+# http://localhost:8000/
+@app.get("/")
+# async def root():
+#     return {"message": "Hello, World!"}
+async def main_page_html(request: Request):
+    return templates.TemplateResponse("main_page.html"
+                                      , {"request": request})
+
 # http://localhost:8000/main_html
 @app.get("/main.html")
 async def main_html(request: Request):
     return templates.TemplateResponse("main.html"
                                       , {"request": request})
-# http://localhost:8000/main_page.html
-@app.get("/main_page.html")
-async def main_page_html(request: Request):
-    return templates.TemplateResponse("main_page.html"
+# # http://localhost:8000/main_page.html
+# @app.get("/main_page.html")
+# async def main_page_html(request: Request):
+#     return templates.TemplateResponse("main_page.html"
+#                                       , {"request": request})
+
+# http://localhost:8000/templates/restaurant_info.html
+@app.get("/restaurant_info.html")
+async def restaurant_info_html(request: Request):
+    return templates.TemplateResponse("restaurant_info.html"
+                                      , {"request": request})
+
+# http://localhost:8000/templates/restaurant_info.html
+@app.get("/restaurant_info.html")
+async def restaurant_info_html(request: Request):
+    return templates.TemplateResponse("restaurant_info.html"
                                       , {"request": request})
 
 # http://localhost:8000/templates/restaurant_info.html
