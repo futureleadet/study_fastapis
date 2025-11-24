@@ -42,22 +42,22 @@ async def main_html(request: Request):
 #     return templates.TemplateResponse("main_page.html"
 #                                       , {"request": request})
 
-# http://localhost:8000/templates/restaurant_info.html
+# http://localhost:8000/restaurant_info.html
 @app.get("/restaurant_info.html")
 async def restaurant_info_html(request: Request):
     return templates.TemplateResponse("restaurant_info.html"
                                       , {"request": request})
 
-# http://localhost:8000/templates/restaurant_info.html
-@app.get("/restaurant_info.html")
-async def restaurant_info_html(request: Request):
-    return templates.TemplateResponse("restaurant_info.html"
+# http://localhost:8000/performance_info.html
+@app.get("/performance_info.html")
+async def performance_info_html(request: Request):
+    return templates.TemplateResponse("performance_info.html"
                                       , {"request": request})
 
-# http://localhost:8000/templates/restaurant_info.html
-@app.get("/restaurant_info.html")
-async def restaurant_info_html(request: Request):
-    return templates.TemplateResponse("restaurant_info.html"
+# http://localhost:8000/popup_info.html
+@app.get("/popup_info.html")
+async def popup_info_html(request: Request):
+    return templates.TemplateResponse("popup_info.html"
                                       , {"request": request})
 
 pass
