@@ -13,9 +13,9 @@ def get_todo(request: Request, todo_id: str):
     conn = get_db_connection()
     with conn.cursor(cursor_factory=DictCursor) as cursor:
     # with conn.cursor() as cursor:
-        cursor.execute("""SELECT id , item
+        cursor.execute(f"""SELECT id , item
                         FROM todo
-                        WHERE id = '65a8a77d-415d-47eb-b149-e0589100e2ac';""")
+                        WHERE id = '{todo_id}';""")
         todo = cursor.fetchone()
     conn.close()
     
@@ -23,7 +23,6 @@ def get_todo(request: Request, todo_id: str):
         "reqeuet" : request,
         "todo" : todo
     }
-
     return templates.TemplateResponse("todos/merged_todo.html", context)
 
 #http://localhost:8000/todos/
