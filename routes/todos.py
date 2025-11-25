@@ -22,4 +22,5 @@ def get_todos_html(request: Request):
         "request" : request,
         "todos" : todos
     }
+    
     return templates.TemplateResponse("todos/merged_todo.html", context)
