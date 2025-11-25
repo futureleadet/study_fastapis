@@ -7,6 +7,27 @@ router = APIRouter()
 
 templates = Jinja2Templates(directory="templates/")
 
+#http://localhost:8000/todos/
+@router.post("/")
+async def add_todo_to_db(request: Request):
+    params = await request.form()
+    conn = get_db_connection()
+    with conn.cursor() as cursor:
+        pass
+        cursor.execute(f"""INSERT INTO todo (item)
+                        VALUES ('{params['item']}');""")
+        conn.commit()
+
+        cursor.execute(f"""SELECT id, item FROM todo ;""")
+        todos = cursor.fetchall()
+    conn.close()
+    context = {
+        "request": request,
+        "todos": todos
+    }
+    return templates.TemplateResponse("todos/merged_todo.html"
+                                      , context)
+
 # http://localhost:8000/todos/
 @router.get("/{todo_id}")
 def get_todo(request: Request, todo_id: str):
