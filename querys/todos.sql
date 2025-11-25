@@ -10,6 +10,10 @@ VALUES ('Learn SQL'), ('Build a REST API'), ('Write Unit Tests');
 SELECT id , item
 FROM todo;
 
+SELECT id , item
+FROM todo
+WHERE id = '65a8a77d-415d-47eb-b149-e0589100e2ac';
+
 UPDATE todo
 SET item = 'learn Advanced SQL'
 WHERE id = '47c7adef-dc75-48d6-b705-10b6c035d728';
