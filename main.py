@@ -109,12 +109,11 @@ templates = Jinja2Templates(directory="templates/")
 # http://localhost:8000/board/detail_json?title=Third%20Post&content=This%20is%20the%20third%20post
 @app.get("/board/detail_json")
 async def board_details_json(request : Request):
-#    request.method
-#    request.query_params
-   params = dict(request.query_params)
-   
+    #    request.method
+    #    request.query_params
+    params = dict(request.query_params)
     # return{"title": "Third Post", "content": "This is the third post."}
-     return {"title": params.title, "content": params.content}
+    return {"title": params["title"], "content": params["content"]}
 
 
 # 정적 파일 설정
