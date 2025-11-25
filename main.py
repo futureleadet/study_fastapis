@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 app = FastAPI()
 
+from routes.todos import router as todos_router
+app.include_router(todos_router, prefix="/todos")
+
 # # http://localhost:8000/html
 # @app.get("/html")
 # async def root_html():
