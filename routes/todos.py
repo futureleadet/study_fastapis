@@ -16,11 +16,17 @@ def get_todo(request: Request, todo_id: str):
                         FROM todo 
                         WHERE id = '{todo_id}';""")
         todo = cursor.fetchone()
+
+        cursor.execute("""SELECT id, item 
+                        FROM todo;""")
+        todos = cursor.fetchall()
+
     conn.close()
         
     context = {
         "request": request,
-        "todo": todo
+        "todo": todo,
+        "todos" : todos
     }
     return templates.TemplateResponse("todos/merged_todo.html"
                                       , context)
