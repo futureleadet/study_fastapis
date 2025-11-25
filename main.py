@@ -115,6 +115,20 @@ async def board_details_json(request : Request):
     # return{"title": "Third Post", "content": "This is the third post."}
     return {"title": params["title"], "content": params["content"]}
 
+# http://localhost:8000/board/detail_post_json?title=Third%20Post&content=This%20is%20the%20third%20post
+@app.post("/board/detail_post_json")
+async def board_details_post_post_json(request : Request):
+    #    request.method
+    #    request.query_params
+    params = dict(request.query_params)
+    # return{"title": "Third Post", "content": "This is the third post."}
+    return {"title": params["title"], "content": params["content"]}
+
+# http://localhost:8000/board/detail_html
+@app.get("/board/detail_html")
+async def main_html(request: Request):
+    return templates.TemplateResponse("board/detail.html"
+                                      , {"request": request})
 
 # 정적 파일 설정
 from fastapi.staticfiles import StaticFiles
