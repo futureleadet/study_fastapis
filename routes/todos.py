@@ -47,3 +47,4 @@ def get_todos_html(request: Request):
     }
     return templates.TemplateResponse("todos/merged_todo.html", context)
 
+
