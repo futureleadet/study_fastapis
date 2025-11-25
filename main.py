@@ -121,10 +121,17 @@ async def board_details_post_post_json(request : Request):
     #    request.method
     #    request.query_params
     params = dict(await request.form())
+    
     # return{"title": "Third Post", "content": "This is the third post."}
     return {"title": params["title"], "content": params["content"]}
 
-# http://localhost:8000/board/detail_html
+# http://localhost:8000/board/detail_html/{detail_id}
+@app.get("/board/detail_html/{detail_id}")
+async def main_html(request: Request, detail_id):
+    return templates.TemplateResponse("boards/detail.html"
+                                      , {"request": request})
+
+# http://localhost:8000/board/{detail_id}detail.html
 @app.get("/board/detail_html")
 async def main_html(request: Request):
     return templates.TemplateResponse("boards/detail.html"
