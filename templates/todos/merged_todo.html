@@ -40,6 +40,7 @@
             </form>
         </section>
 
+        {% if todo %}
         <article class="card container-fluid">
             <br/>
             <h4>Todo ID: {{ todo[0] }} </h4>
@@ -49,7 +50,7 @@
                 </strong>
             </p>
         </article>
-
+        {% endif %}
         <section class="container-fluid">
             <h2 align="center">Todos</h2>
             <br>
@@ -57,7 +58,7 @@
                 <ul class="list-group list-group-flush">
                     {% for todo in todos %}
                     <li class="list-group-item">
-                        {{ loop.index }} <a href="/todos/{{ todo[0] }}"> {{ todo[1] }} </a>
+                        {{ loop.index }}. <a href="/todos/{{ todo[0] }}"> {{ todo[1] }} </a>
                     </li>
                     {% endfor %}
                 </ul>

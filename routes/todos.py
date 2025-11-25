@@ -7,38 +7,37 @@ router = APIRouter()
 
 templates = Jinja2Templates(directory="templates/")
 
-#http://localhost:8000/todos/
+# http://localhost:8000/todos/
 @router.get("/{todo_id}")
 def get_todo(request: Request, todo_id: str):
-    conn = get_db_connection()
+    conn = get_db_connection()  # DB 연결 테스트 용도
     with conn.cursor(cursor_factory=DictCursor) as cursor:
-    # with conn.cursor() as cursor:
-        cursor.execute(f"""SELECT id , item
-                        FROM todo
+        cursor.execute(f"""SELECT id, item 
+                        FROM todo 
                         WHERE id = '{todo_id}';""")
         todo = cursor.fetchone()
     conn.close()
-    
+        
     context = {
-        "reqeuet" : request,
-        "todo" : todo
+        "request": request,
+        "todo": todo
     }
-    return templates.TemplateResponse("todos/merged_todo.html", context)
+    return templates.TemplateResponse("todos/merged_todo.html"
+                                      , context)
 
-#http://localhost:8000/todos/
+# http://localhost:8000/todos/
 @router.get("/")
 def get_todos_html(request: Request):
-    conn = get_db_connection()
+    conn = get_db_connection()  # DB 연결 테스트 용도
     with conn.cursor(cursor_factory=DictCursor) as cursor:
-    # with conn.cursor() as cursor:
-        cursor.execute("""SELECT id , item
+        cursor.execute("""SELECT id, item 
                         FROM todo;""")
         todos = cursor.fetchall()
     conn.close()
 
     context = {
-        "request" : request,
-        "todos" : todos
+        "request": request,
+        "todos": todos
     }
-
     return templates.TemplateResponse("todos/merged_todo.html", context)
+
