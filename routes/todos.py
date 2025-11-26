@@ -28,6 +28,18 @@ async def add_todo_to_db(request: Request):
     return templates.TemplateResponse("todos/merged_todo.html"
                                       , context)
 
+##### 삭제
+@router.post("/delete/{todo_id}")
+def delete_todo(request: Request, todo_id: str):
+    conn = get_db_connection()
+    with conn.cursor() as cursor:
+        cursor.execute(f"DELETE FROM todo WHERE id = '{todo_id}';")
+        conn.commit()
+    conn.close()
+
+    # 삭제 후 다시 /todos/ 로 이동
+    return RedirectResponse(url="/todos/")
+
 # http://localhost:8000/todos/
 @router.get("/{todo_id}")
 def get_todo(request: Request, todo_id: str):
@@ -67,5 +79,3 @@ def get_todos_html(request: Request):
         "todos": todos
     }
     return templates.TemplateResponse("todos/merged_todo.html", context)
-
-
