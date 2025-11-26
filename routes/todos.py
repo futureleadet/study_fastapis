@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import RedirectResponse
 from services.db import get_db_connection
 from psycopg2.extras import DictCursor
 
@@ -38,7 +39,7 @@ def delete_todo(request: Request, todo_id: str):
     conn.close()
 
     # 삭제 후 다시 /todos/ 로 이동
-    return RedirectResponse(url="/todos/")
+    return RedirectResponse(url="/todos/", status_code=303)
 
 # http://localhost:8000/todos/
 @router.get("/{todo_id}")
